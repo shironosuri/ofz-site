@@ -6,6 +6,8 @@ node_modules
 .next
 next-env.d.ts
 .vercel
+.docs
+.scrapboard
 
 # Payload default media upload directory
 public/media/
