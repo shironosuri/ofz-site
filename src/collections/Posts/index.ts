@@ -11,11 +11,16 @@ import {
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
+import { ArticleCallout } from '../../blocks/ArticleCallout/config'
+import { ArticleAside } from '../../blocks/ArticleAside/config'
+import { ArticleStackGrid } from '../../blocks/ArticleStackGrid/config'
 import { Banner } from '../../blocks/Banner/config'
 import { Code } from '../../blocks/Code/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
+import { calculateReadingTime } from './hooks/calculateReadingTime'
 import { populateAuthors } from './hooks/populateAuthors'
+import { populateUrl } from './hooks/populateUrl'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
 import {
@@ -29,6 +34,10 @@ import { slugField } from 'payload'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
+  labels: {
+    singular: 'Article',
+    plural: 'Articles',
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -41,7 +50,7 @@ export const Posts: CollectionConfig<'posts'> = {
   defaultPopulate: {
     title: true,
     slug: true,
-    categories: true,
+    category: true,
     meta: {
       image: true,
       description: true,
@@ -55,6 +64,7 @@ export const Posts: CollectionConfig<'posts'> = {
           slug: data?.slug,
           collection: 'posts',
           req,
+          category: data?.category,
         }),
     },
     preview: (data, { req }) =>
@@ -62,6 +72,7 @@ export const Posts: CollectionConfig<'posts'> = {
         slug: data?.slug as string,
         collection: 'posts',
         req,
+        category: data?.category as string,
       }),
     useAsTitle: 'title',
   },
@@ -70,6 +81,65 @@ export const Posts: CollectionConfig<'posts'> = {
       name: 'title',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'subtitle',
+      type: 'textarea',
+      label: 'Subtitle',
+    },
+    {
+      name: 'eyebrow',
+      type: 'text',
+      label: 'Eyebrow',
+    },
+    {
+      name: 'category',
+      type: 'select',
+      label: 'Category',
+      required: true,
+      options: [
+        { label: 'Craft', value: 'craft' },
+        { label: 'Theory', value: 'theory' },
+        { label: 'Process', value: 'process' },
+      ],
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'tags',
+      type: 'select',
+      label: 'Tags',
+      hasMany: true,
+      options: [
+        { label: 'JavaScript', value: 'javascript' },
+        { label: 'TypeScript', value: 'typescript' },
+        { label: 'CSS', value: 'css' },
+        { label: 'Payload', value: 'payload' },
+        { label: 'Next.js', value: 'nextjs' },
+        { label: 'React', value: 'react' },
+      ],
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'readingTime',
+      type: 'number',
+      label: 'Reading Time (minutes)',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+    },
+    {
+      name: 'url',
+      type: 'text',
+      label: 'URL',
+      admin: {
+        hidden: true,
+      },
+      virtual: true,
     },
     {
       type: 'tabs',
@@ -89,7 +159,7 @@ export const Posts: CollectionConfig<'posts'> = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
+                    BlocksFeature({ blocks: [Banner, Code, MediaBlock, ArticleCallout, ArticleAside, ArticleStackGrid] }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),
@@ -119,15 +189,6 @@ export const Posts: CollectionConfig<'posts'> = {
               },
               hasMany: true,
               relationTo: 'posts',
-            },
-            {
-              name: 'categories',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              hasMany: true,
-              relationTo: 'categories',
             },
           ],
           label: 'Meta',
@@ -217,8 +278,9 @@ export const Posts: CollectionConfig<'posts'> = {
     slugField(),
   ],
   hooks: {
+    beforeChange: [calculateReadingTime],
     afterChange: [revalidatePost],
-    afterRead: [populateAuthors],
+    afterRead: [populateAuthors, populateUrl],
     afterDelete: [revalidateDelete],
   },
   versions: {

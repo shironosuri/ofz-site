@@ -14,17 +14,31 @@ import {
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 
 import type {
+  ArticleCalloutBlock as ArticleCalloutBlockProps,
+  ArticleAsideBlock as ArticleAsideBlockProps,
+  ArticleStackGridBlock as ArticleStackGridBlockProps,
   BannerBlock as BannerBlockProps,
   CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
 } from '@/payload-types'
+import { ArticleCalloutBlock } from '@/blocks/ArticleCallout/Component'
+import { ArticleAsideBlock } from '@/blocks/ArticleAside/Component'
+import { ArticleStackGridBlock } from '@/blocks/ArticleStackGrid/Component'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
 
 type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
+  | SerializedBlockNode<
+      | CTABlockProps
+      | MediaBlockProps
+      | BannerBlockProps
+      | CodeBlockProps
+      | ArticleCalloutBlockProps
+      | ArticleAsideBlockProps
+      | ArticleStackGridBlockProps
+    >
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -32,13 +46,16 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
     throw new Error('Expected value to be an object')
   }
   const slug = value.slug
-  return relationTo === 'posts' ? `/posts/${slug}` : `/${slug}`
+  return (value as any).url || (relationTo === 'posts' ? `/posts/${slug}` : `/${slug}`)
 }
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
+    articleCallout: ({ node }) => <ArticleCalloutBlock {...node.fields} />,
+    articleAside: ({ node }) => <ArticleAsideBlock {...node.fields} />,
+    articleStackGrid: ({ node }) => <ArticleStackGridBlock {...node.fields} />,
     banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
     mediaBlock: ({ node }) => (
       <MediaBlock

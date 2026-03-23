@@ -10,6 +10,7 @@ export const post2: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
     slug: 'global-gaze',
     _status: 'published',
     authors: [author],
+    category: 'theory',
     content: {
       root: {
         type: 'root',

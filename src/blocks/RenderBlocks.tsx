@@ -3,6 +3,9 @@ import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
+import { ArticleCalloutBlock } from '@/blocks/ArticleCallout/Component'
+import { ArticleAsideBlock } from '@/blocks/ArticleAside/Component'
+import { ArticleStackGridBlock } from '@/blocks/ArticleStackGrid/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
@@ -10,6 +13,9 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
+  articleCallout: ArticleCalloutBlock,
+  articleAside: ArticleAsideBlock,
+  articleStackGrid: ArticleStackGridBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
