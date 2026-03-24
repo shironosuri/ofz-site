@@ -22,13 +22,11 @@ export const ArticleAsideBlock: React.FC<Props> = ({ className, content, style }
 
   return (
     <div className={`aside ${className || ''}`}>
-      <div>
-        <div className="aside-icon">
-          {getIcon()}
-        </div>
-        <div className="aside-content">
-          <RichText data={content} enableGutter={false} enableProse={false} />
-        </div>
+      <div className="aside-icon">
+        {getIcon()}
+      </div>
+      <div className="aside-content">
+        <RichText data={content} enableGutter={false} enableProse={false} />
       </div>
     </div>
   )

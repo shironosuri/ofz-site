@@ -27,7 +27,7 @@ export const Card: React.FC<{
   const hasCategory = category && typeof category === 'string'
   const titleToUse = titleFromProps || title
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
-  const href = url || `/${relationTo}/${slug}`
+  const href = url || (relationTo === 'posts' && category ? `/${category}/${slug}` : `/${relationTo}/${slug}`)
 
   return (
     <article

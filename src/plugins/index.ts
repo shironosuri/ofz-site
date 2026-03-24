@@ -20,7 +20,15 @@ const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
 const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
   const url = getServerSideURL()
 
-  return doc?.slug ? `${url}/${doc.slug}` : url
+  if (!doc?.slug) return url
+
+  // For posts, use category-based URL
+  if ('category' in doc && doc.category) {
+    return `${url}/${doc.category}/${doc.slug}`
+  }
+
+  // For pages and other documents, use the original logic
+  return `${url}/${doc.slug}`
 }
 
 export const plugins: Plugin[] = [

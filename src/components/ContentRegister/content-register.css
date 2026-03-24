@@ -4,6 +4,7 @@
   --cr-cream: #ede7d5;
   --cr-accent: #b5451b;
   --cr-accent-muted: #d4794d;
+  --accent-muted: var(--cr-accent-muted);
   --cr-caption: #7a6e5e;
   --cr-rule: #c8bfa8;
   --cr-mono-bg: #1a1a1a;
@@ -32,7 +33,7 @@
 
 .content-register .hero-eyebrow {
   font-family: var(--font-dm-mono);
-  font-size: 0.7rem;
+  font-size: 0.7em;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cr-accent);
@@ -51,11 +52,15 @@
 }
 
 .content-register .hero {
-  padding: 5rem 0 3rem;
+  padding: 5rem 0 0rem;
+}
+
+.content-register .prose {
+  font-size: inherit;
 }
 
 .content-register .hero-deck {
-  font-size: 1.05rem;
+  font-size: 1.05em;
   color: #3a3530;
   max-width: 600px;
   line-height: 1.8;
@@ -66,10 +71,19 @@
 
 .content-register .byline {
   font-family: var(--font-dm-mono);
-  font-size: 0.68rem;
+  font-size: 0.68em;
   color: var(--cr-caption);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.content-register .step-label {
+  font-family: var(--font-dm-mono);
+  font-size: 0.65em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-muted);
+  margin-bottom: 0.5rem;
 }
 
 .content-register h2 {
@@ -109,8 +123,8 @@
 .content-register hr {
   border: none;
   border-top: 1px solid var(--cr-rule);
-  margin: 3rem auto;
   max-width: 860px;
+  margin: 3rem -1.5rem;
 }
 
 .content-register code {
@@ -187,6 +201,12 @@
   font-size: 0.95em;
 }
 
+.content-register ul li > p {
+  font-size: 0.98em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .content-register ul li::before {
   content: '—';
   position: absolute;
@@ -216,6 +236,7 @@
 
 .content-register .aside {
   display: flex;
+  align-items: flex-start;
   gap: 1rem;
   background: var(--cr-cream);
   padding: 1.1rem 1.25rem;
@@ -224,9 +245,23 @@
   border-left: 3px solid var(--cr-ink);
 }
 
+.content-register .aside-icon {
+  flex: 0 0 auto;
+  width: 1.5rem;
+  font-family: var(--font-dm-mono);
+  font-size: 1.1em;
+  line-height: 1.25;
+  color: var(--cr-ink);
+}
+
+.content-register .aside-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .content-register .aside p {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.88em;
   color: #3a3530;
 }
 
@@ -250,7 +285,7 @@
 
 .content-register .stack-item-label {
   font-family: var(--font-dm-mono);
-  font-size: 0.6rem;
+  font-size: 0.6em;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--cr-caption);
@@ -259,12 +294,12 @@
 
 .content-register .stack-item-name {
   font-family: var(--font-playfair-display);
-  font-size: 1.05rem;
+  font-size: 1.05em;
   font-weight: 700;
 }
 
 .content-register .stack-item-desc {
-  font-size: 0.78rem;
+  font-size: 0.78em;
   color: var(--cr-caption);
   margin-top: 0.2rem;
 }

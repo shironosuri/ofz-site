@@ -13,6 +13,7 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 const nextConfig: NextConfig = {
   images: {
+    dangerouslyAllowLocalIP: process.env.NODE_ENV !== 'production',
     qualities: [100],
     remotePatterns: [
       ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {

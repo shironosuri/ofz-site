@@ -234,21 +234,7 @@ export interface Post {
   readingTime?: number | null;
   url?: string | null;
   heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  content: (RichTextSection | StepSection | DividerBlock)[];
   relatedPosts?: (number | Post)[] | null;
   meta?: {
     title?: string | null;
@@ -393,6 +379,74 @@ export interface FolderInterface {
   folderType?: 'media'[] | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextSection".
+ */
+export interface RichTextSection {
+  heading?: string | null;
+  /**
+   * Override the auto-generated section ID
+   */
+  sectionSlug?: string | null;
+  body: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'richTextSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StepSection".
+ */
+export interface StepSection {
+  stepLabel?: string | null;
+  stepHeader: string;
+  /**
+   * Override the auto-generated section ID
+   */
+  sectionSlug?: string | null;
+  body: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'stepSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DividerBlock".
+ */
+export interface DividerBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'dividerBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1206,7 +1260,13 @@ export interface PostsSelect<T extends boolean = true> {
   readingTime?: T;
   url?: T;
   heroImage?: T;
-  content?: T;
+  content?:
+    | T
+    | {
+        richTextSection?: T | RichTextSectionSelect<T>;
+        stepSection?: T | StepSectionSelect<T>;
+        dividerBlock?: T | DividerBlockSelect<T>;
+      };
   relatedPosts?: T;
   meta?:
     | T
@@ -1228,6 +1288,37 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextSection_select".
+ */
+export interface RichTextSectionSelect<T extends boolean = true> {
+  heading?: T;
+  sectionSlug?: T;
+  body?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StepSection_select".
+ */
+export interface StepSectionSelect<T extends boolean = true> {
+  stepLabel?: T;
+  stepHeader?: T;
+  sectionSlug?: T;
+  body?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DividerBlock_select".
+ */
+export interface DividerBlockSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

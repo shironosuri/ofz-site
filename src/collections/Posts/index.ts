@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
+import type { Block } from 'payload'
 import {
   BlocksFeature,
   FixedToolbarFeature,
@@ -17,6 +18,9 @@ import { ArticleStackGrid } from '../../blocks/ArticleStackGrid/config'
 import { Banner } from '../../blocks/Banner/config'
 import { Code } from '../../blocks/Code/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { RichTextSection } from '../../blocks/ArticleBlocks/RichTextSection/config'
+import { StepSection } from '../../blocks/ArticleBlocks/StepSection/config'
+import { DividerBlock } from '../../blocks/ArticleBlocks/DividerBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { calculateReadingTime } from './hooks/calculateReadingTime'
 import { populateAuthors } from './hooks/populateAuthors'
@@ -153,19 +157,8 @@ export const Posts: CollectionConfig<'posts'> = {
             },
             {
               name: 'content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
-                  return [
-                    ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock, ArticleCallout, ArticleAside, ArticleStackGrid] }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                    HorizontalRuleFeature(),
-                  ]
-                },
-              }),
+              type: 'blocks',
+              blocks: [RichTextSection, StepSection, DividerBlock],
               label: false,
               required: true,
             },

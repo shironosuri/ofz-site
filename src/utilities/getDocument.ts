@@ -6,26 +6,23 @@ import { unstable_cache } from 'next/cache'
 
 type Collection = keyof Config['collections']
 
-async function getDocument(collection: Collection, slug: string, depth = 0) {
+async function getDocumentByID(collection: Collection, id: number, depth = 0) {
   const payload = await getPayload({ config: configPromise })
 
-  const page = await payload.find({
+  const document = await payload.findByID({
     collection,
     depth,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
+    id,
+    overrideAccess: false,
   })
 
-  return page.docs[0]
+  return document
 }
 
 /**
- * Returns a unstable_cache function mapped with the cache tag for the slug
+ * Returns an unstable_cache function mapped with the cache tag for the document ID.
  */
-export const getCachedDocument = (collection: Collection, slug: string) =>
-  unstable_cache(async () => getDocument(collection, slug), [collection, slug], {
-    tags: [`${collection}_${slug}`],
+export const getCachedDocumentByID = (collection: Collection, id: number) =>
+  unstable_cache(async () => getDocumentByID(collection, id), [collection, String(id)], {
+    tags: [`${collection}_${id}`],
   })

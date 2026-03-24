@@ -11,223 +11,224 @@ export const post2: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
     _status: 'published',
     authors: [author],
     category: 'theory',
-    content: {
-      root: {
-        type: 'root',
-        children: [
-          {
-            type: 'heading',
+    content: [
+      {
+        blockType: 'richTextSection',
+        heading: 'Explore the untold and overlooked. A magnified view into the corners of the world, where every story deserves its spotlight.',
+        body: {
+          root: {
+            type: 'root',
             children: [
               {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: 'Explore the untold and overlooked. A magnified view into the corners of the world, where every story deserves its spotlight.',
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'In an era of information overload, some of the most compelling narratives often remain hidden in the shadows. This series aims to illuminate those overlooked stories, giving voice to the voiceless and shedding light on the extraordinary within the ordinary.',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                textFormat: 0,
                 version: 1,
               },
             ],
             direction: 'ltr',
             format: '',
             indent: 0,
-            tag: 'h2',
             version: 1,
           },
-          {
-            type: 'block',
-            fields: {
-              blockName: 'Disclaimer',
-              blockType: 'banner',
-              content: {
-                root: {
-                  type: 'root',
-                  children: [
-                    {
-                      type: 'paragraph',
-                      children: [
-                        {
-                          type: 'text',
-                          detail: 0,
-                          format: 1,
-                          mode: 'normal',
-                          style: '',
-                          text: 'Disclaimer:',
-                          version: 1,
-                        },
-                        {
-                          type: 'text',
-                          detail: 0,
-                          format: 0,
-                          mode: 'normal',
-                          style: '',
-                          text: ' This content is fabricated and for demonstration purposes only. To edit this post, ',
-                          version: 1,
-                        },
-                        {
-                          type: 'link',
-                          children: [
-                            {
-                              type: 'text',
-                              detail: 0,
-                              format: 0,
-                              mode: 'normal',
-                              style: '',
-                              text: 'navigate to the admin dashboard.',
-                              version: 1,
-                            },
-                          ],
-                          direction: 'ltr',
-                          fields: {
-                            linkType: 'custom',
-                            newTab: true,
-                            url: '/admin',
-                          },
-                          format: '',
-                          indent: 0,
-                          version: 3,
-                        },
-                      ],
-                      direction: 'ltr',
-                      format: '',
-                      indent: 0,
-                      textFormat: 1,
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  format: '',
-                  indent: 0,
-                  version: 1,
-                },
-              },
-              style: 'info',
-            },
-            format: '',
-            version: 2,
-          },
-          {
-            type: 'heading',
-            children: [
-              {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: 'The Power of Resilience: Stories of Recovery and Hope',
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            tag: 'h2',
-            version: 1,
-          },
-          {
-            type: 'paragraph',
-            children: [
-              {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: "Throughout history, regions across the globe have faced the devastating impact of natural disasters, the turbulence of political unrest, and the challenging ripples of economic downturns. In these moments of profound crisis, an often-underestimated force emerges: the indomitable resilience of the human spirit. These aren't just tales of mere survival, but stories of communities forging bonds, uniting with a collective purpose, and demonstrating an innate ability to overcome.",
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            textFormat: 0,
-            version: 1,
-          },
-          {
-            type: 'block',
-            fields: {
-              blockName: '',
-              blockType: 'mediaBlock',
-              media: blockImage.id,
-            },
-            format: '',
-            version: 2,
-          },
-          {
-            type: 'paragraph',
-            children: [
-              {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: 'From neighbors forming makeshift rescue teams during floods to entire cities rallying to rebuild after economic collapse, the essence of humanity is most evident in these acts of solidarity. As we delve into these narratives, we witness the transformative power of community spirit, where adversity becomes a catalyst for growth, unity, and a brighter, rebuilt future.',
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            textFormat: 0,
-            version: 1,
-          },
-          {
-            type: 'block',
-            fields: {
-              blockName: 'Dynamic components',
-              blockType: 'banner',
-              content: {
-                root: {
-                  type: 'root',
-                  children: [
-                    {
-                      type: 'paragraph',
-                      children: [
-                        {
-                          type: 'text',
-                          detail: 0,
-                          format: 0,
-                          mode: 'normal',
-                          style: '',
-                          text: "This content above is completely dynamic using custom layout building blocks configured in the CMS. This can be anything you'd like from rich text and images, to highly designed, complex components.",
-                          version: 1,
-                        },
-                      ],
-                      direction: 'ltr',
-                      format: '',
-                      indent: 0,
-                      textFormat: 0,
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  format: '',
-                  indent: 0,
-                  version: 1,
-                },
-              },
-              style: 'info',
-            },
-            format: '',
-            version: 2,
-          },
-        ],
-        direction: 'ltr',
-        format: '',
-        indent: 0,
-        version: 1,
+        },
       },
-    },
+      {
+        blockType: 'stepSection',
+        stepLabel: 'Step 1',
+        stepHeader: 'Identifying Hidden Narratives',
+        body: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'The first challenge is recognizing stories that deserve attention but have been overlooked by mainstream media. This requires a keen eye for the unusual, the marginalized, and the profoundly human.',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                textFormat: 0,
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        },
+      },
+      {
+        blockType: 'stepSection',
+        stepLabel: 'Step 2',
+        stepHeader: 'Amplifying Diverse Voices',
+        body: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Once identified, these stories need platforms that can amplify them without distortion. This involves building trust with communities and ensuring authentic representation.',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                textFormat: 0,
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        },
+      },
+      {
+        blockType: 'richTextSection',
+        heading: 'The Impact of Storytelling',
+        body: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'When overlooked stories find their audience, they have the power to challenge assumptions, build empathy, and inspire action. Storytelling becomes a bridge between worlds, connecting people across cultures and experiences.',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                textFormat: 0,
+                version: 1,
+              },
+              {
+                type: 'block',
+                fields: {
+                  blockName: '',
+                  blockType: 'mediaBlock',
+                  media: blockImage.id,
+                },
+                format: '',
+                version: 2,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        },
+      },
+      {
+        blockType: 'richTextSection',
+        heading: 'Storytelling Methods Comparison',
+        body: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Different approaches to storytelling can be compared using our stack grid:',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                textFormat: 0,
+                version: 1,
+              },
+              {
+                type: 'block',
+                fields: {
+                  blockName: 'Methodology Comparison',
+                  blockType: 'articleStackGrid',
+                  items: [
+                    {
+                      label: 'Interviews',
+                      name: 'First-person Accounts',
+                      description: 'Direct quotes and personal narratives',
+                    },
+                    {
+                      label: 'Investigation',
+                      name: 'Research-based',
+                      description: 'Data-driven and factual reporting',
+                    },
+                    {
+                      label: 'Narrative',
+                      name: 'Story Arc',
+                      description: 'Structured storytelling with beginning, middle, end',
+                    },
+                  ],
+                },
+                format: '',
+                version: 2,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        },
+      },
+    ],
     heroImage: heroImage.id,
     meta: {
       description:
         'Explore the untold and overlooked. A magnified view into the corners of the world, where every story deserves its spotlight.',
       image: heroImage.id,
-      title: 'Global Gaze: Beyond the Headlines',
+      title: 'Global Gaze: Uncovering Hidden Narratives',
     },
-    relatedPosts: [], // this is populated by the seed script
-    title: 'Global Gaze: Beyond the Headlines',
+    relatedPosts: [],
+    title: 'Global Gaze: Uncovering Hidden Narratives',
   }
 }

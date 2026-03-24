@@ -1,13 +1,31 @@
 import type React from 'react'
-import type { Page, Post } from '@/payload-types'
+import type { Page, Post, Redirect } from '@/payload-types'
 
-import { getCachedDocument } from '@/utilities/getDocument'
+import { getCachedDocumentByID } from '@/utilities/getDocument'
 import { getCachedRedirects } from '@/utilities/getRedirects'
 import { notFound, redirect } from 'next/navigation'
 
 interface Props {
   disableNotFound?: boolean
   url: string
+}
+
+type RedirectReference = NonNullable<NonNullable<Redirect['to']>['reference']>
+
+const resolveReferenceUrl = (
+  relationTo: RedirectReference['relationTo'],
+  value: Page | Post | null | undefined,
+): string | null => {
+
+  if (!value || typeof value !== 'object' || !('slug' in value) || !value.slug) return null
+
+  if ('url' in value && value.url) return value.url
+
+  if (relationTo === 'posts' && 'category' in value) {
+    return value.category ? `/${value.category}/${value.slug}` : null
+  }
+
+  return `/${value.slug}`
 }
 
 /* This component helps us with SSR based dynamic redirects */
@@ -21,24 +39,29 @@ export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, url }
       redirect(redirectItem.to.url)
     }
 
-    let redirectUrl: string
+    let redirectUrl: string | null = null
 
-    if (typeof redirectItem.to?.reference?.value === 'string') {
+    if (typeof redirectItem.to?.reference?.value === 'number' && redirectItem.to?.reference?.relationTo) {
       const collection = redirectItem.to?.reference?.relationTo
       const id = redirectItem.to?.reference?.value
 
-      const document = (await getCachedDocument(collection, id)()) as Page | Post
-      redirectUrl = (document as any)?.url || `${redirectItem.to?.reference?.relationTo !== 'pages' ? `/${redirectItem.to?.reference?.relationTo}` : ''}/${
-        document?.slug
-      }`
-    } else {
-      redirectUrl = (typeof redirectItem.to?.reference?.value === 'object'
-          ? (redirectItem.to?.reference?.value as any)?.url
-          : '') || `${redirectItem.to?.reference?.relationTo !== 'pages' ? `/${redirectItem.to?.reference?.relationTo}` : ''}/${
-        typeof redirectItem.to?.reference?.value === 'object'
-          ? redirectItem.to?.reference?.value?.slug
-          : ''
-      }`
+      if (collection === 'pages') {
+        const document = (await getCachedDocumentByID(collection, id)()) as Page
+        redirectUrl = resolveReferenceUrl(collection, document)
+      } else {
+        const document = (await getCachedDocumentByID(collection, id)()) as Post
+        redirectUrl = resolveReferenceUrl(collection, document)
+      }
+    } else if (
+      redirectItem.to?.reference?.relationTo === 'pages' &&
+      typeof redirectItem.to.reference.value === 'object'
+    ) {
+      redirectUrl = resolveReferenceUrl('pages', redirectItem.to.reference.value)
+    } else if (
+      redirectItem.to?.reference?.relationTo === 'posts' &&
+      typeof redirectItem.to.reference.value === 'object'
+    ) {
+      redirectUrl = resolveReferenceUrl('posts', redirectItem.to.reference.value)
     }
 
     if (redirectUrl) redirect(redirectUrl)

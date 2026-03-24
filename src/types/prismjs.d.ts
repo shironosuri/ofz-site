@@ -1,0 +1,9 @@
+declare module 'prismjs' {
+  const Prism: any
+  export default Prism
+}
+
+declare module 'prismjs/components/*' {
+  const component: any
+  export default component
+}
