@@ -1,18 +1,8 @@
-.content-register {
-  --cr-paper: #f5f0e8;
-  --cr-ink: #0d0d0d;
-  --cr-cream: #ede7d5;
-  --cr-accent: #b5451b;
-  --cr-accent-muted: #d4794d;
-  --accent-muted: var(--cr-accent-muted);
-  --cr-caption: #7a6e5e;
-  --cr-rule: #c8bfa8;
-  --cr-mono-bg: #1a1a1a;
-  --cr-mono-text: #c8bfa8;
-  --cr-mono-highlight: #e8a87c;
+@import '../../styles/tokens.css';
 
-  background-color: var(--cr-paper);
-  color: var(--cr-ink);
+.content-register {
+  background-color: var(--ds-color-content-paper);
+  color: var(--ds-color-content-ink);
   font-family: var(--font-instrument-sans);
   font-weight: 400;
   line-height: 1.75;
@@ -27,7 +17,7 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;
-  color: var(--cr-ink);
+  color: var(--ds-color-content-ink);
 
 }
 
@@ -36,7 +26,7 @@
   font-size: 0.7em;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--cr-accent);
+  color: var(--ds-color-brand-accent);
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -48,7 +38,7 @@
   display: block;
   width: 48px;
   height: 1px;
-  background: var(--cr-accent);
+  background: var(--ds-color-brand-accent);
 }
 
 .content-register .hero {
@@ -61,18 +51,18 @@
 
 .content-register .hero-deck {
   font-size: 1.05em;
-  color: #3a3530;
+  color: var(--ds-color-content-copy);
   max-width: 600px;
   line-height: 1.8;
   margin-bottom: 2rem;
-  border-left: 3px solid var(--cr-accent);
+  border-left: 3px solid var(--ds-color-brand-accent);
   padding-left: 1.25rem;
 }
 
 .content-register .byline {
   font-family: var(--font-dm-mono);
   font-size: 0.68em;
-  color: var(--cr-caption);
+  color: var(--ds-color-content-caption);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -82,7 +72,7 @@
   font-size: 0.65em;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent-muted);
+  color: var(--ds-color-brand-accent-muted);
   margin-bottom: 0.5rem;
 }
 
@@ -92,7 +82,7 @@
   font-weight: 700;
   line-height: 1.25;
   margin-bottom: 1rem;
-  color: var(--cr-ink);
+  color: var(--ds-color-content-ink);
 
 }
 
@@ -102,7 +92,7 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--cr-caption);
+  color: var(--ds-color-content-caption);
   margin: 2rem 0 0.75rem;
 }
 
@@ -112,40 +102,40 @@
 }
 
 .content-register a {
-  color: var(--cr-accent);
+  color: var(--ds-color-brand-accent);
   text-decoration: underline;
 }
 
 .content-register a:hover {
-  color: var(--cr-accent-muted);
+  color: var(--ds-color-brand-accent-muted);
 }
 
 .content-register hr {
   border: none;
-  border-top: 1px solid var(--cr-rule);
+  border-top: 1px solid var(--ds-color-content-rule);
   max-width: 860px;
   margin: 3rem -1.5rem;
 }
 
 .content-register code {
-  background: var(--cr-cream);
+  background: var(--ds-color-content-cream);
   font-family: var(--font-dm-mono);
   font-size: 0.82em;
   padding: 0.1em 0.35em;
   border-radius: 2px;
-  color: var(--cr-accent);
+  color: var(--ds-color-brand-accent);
 }
 
 .content-register pre {
-  background: var(--cr-mono-bg);
-  color: var(--cr-mono-text);
+  background: var(--ds-color-content-code-background);
+  color: var(--ds-color-content-code-text);
   font-family: var(--font-dm-mono);
   font-size: 0.78em;
   line-height: 1.7;
   padding: 1.5rem 1.75rem;
   margin: 1.25rem 0;
   overflow-x: auto;
-  border-left: 3px solid var(--cr-accent);
+  border-left: 3px solid var(--ds-color-brand-accent);
   border-radius: 0;
 }
 
@@ -166,7 +156,7 @@
 }
 
 .content-register pre .text-white\/25 {
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--ds-color-content-code-line-number);
 }
 
 .content-register pre .pl-4 {
@@ -181,11 +171,11 @@
 }
 
 .content-register .hl {
-  color: var(--cr-mono-highlight);
+  color: var(--ds-color-content-code-highlight);
 }
 
 .content-register .comment {
-  color: #6a6050;
+  color: var(--ds-color-content-comment);
 }
 
 .content-register ul {
@@ -211,7 +201,7 @@
   content: '—';
   position: absolute;
   left: 0;
-  color: var(--cr-accent);
+  color: var(--ds-color-brand-accent);
   font-family: var(--font-dm-mono);
 }
 
@@ -220,16 +210,16 @@
   font-style: italic;
   font-size: 1.25em;
   line-height: 1.6;
-  color: #2a2520;
-  border-left: 3px solid var(--cr-accent);
+  color: var(--ds-color-content-quote);
+  border-left: 3px solid var(--ds-color-brand-accent);
   padding-left: 1.25rem;
   margin: 1.5rem 0;
 }
 
 .content-register .callout {
-  background: var(--cr-cream);
-  border-top: 2px solid var(--cr-ink);
-  border-bottom: 2px solid var(--cr-ink);
+  background: var(--ds-color-content-cream);
+  border-top: 2px solid var(--ds-color-content-ink);
+  border-bottom: 2px solid var(--ds-color-content-ink);
   padding: 1.75rem 2rem;
   margin: 2.5rem 0;
 }
@@ -238,11 +228,11 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  background: var(--cr-cream);
+  background: var(--ds-color-content-cream);
   padding: 1.1rem 1.25rem;
   margin: 1.5rem 0;
   border-radius: 0;
-  border-left: 3px solid var(--cr-ink);
+  border-left: 3px solid var(--ds-color-content-ink);
 }
 
 .content-register .aside-icon {
@@ -251,7 +241,7 @@
   font-family: var(--font-dm-mono);
   font-size: 1.1em;
   line-height: 1.25;
-  color: var(--cr-ink);
+  color: var(--ds-color-content-ink);
 }
 
 .content-register .aside-content {
@@ -262,7 +252,7 @@
 .content-register .aside p {
   margin: 0;
   font-size: 0.88em;
-  color: #3a3530;
+  color: var(--ds-color-content-copy);
 }
 
 .content-register .aside strong {
@@ -273,13 +263,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1px;
-  background: var(--cr-rule);
-  border: 1px solid var(--cr-rule);
+  background: var(--ds-color-content-rule);
+  border: 1px solid var(--ds-color-content-rule);
   margin: 1.5rem 0;
 }
 
 .content-register .stack-item {
-  background: var(--cr-paper);
+  background: var(--ds-color-content-paper);
   padding: 1.25rem 1rem;
 }
 
@@ -288,7 +278,7 @@
   font-size: 0.6em;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--cr-caption);
+  color: var(--ds-color-content-caption);
   margin-bottom: 0.35rem;
 }
 
@@ -300,7 +290,7 @@
 
 .content-register .stack-item-desc {
   font-size: 0.78em;
-  color: var(--cr-caption);
+  color: var(--ds-color-content-caption);
   margin-top: 0.2rem;
 }
 

@@ -1139,3 +1139,22 @@ For deeper exploration of specific topics, refer to the context files located in
 - GitHub: https://github.com/payloadcms/payload
 - Examples: https://github.com/payloadcms/payload/tree/main/examples
 - Templates: https://github.com/payloadcms/payload/tree/main/templates
+
+## Design System
+
+Use `design-system/SUMMARY.md` as the quick-reference source for the current token tables, installed primitives, and block registry. Use `design-system/component-index.json` before building anything new.
+
+1. **No raw colour values.** All colours must come from `--ds-*` CSS variables defined in `src/styles/tokens.css`. Do not introduce new hex values, `rgb()` values, or ad hoc colour decisions in components.
+2. **No raw spacing values.** Use the Tailwind spacing scale or the spacing tokens documented in `src/styles/tokens.css` and `design-system/SUMMARY.md`. Do not add arbitrary spacing values like `p-[37px]` or inline numeric spacing styles in new work.
+3. **Check existing components before creating new ones.** Before creating any UI element, check `design-system/component-index.json`, then `src/components/ui/`, then `src/blocks/`.
+4. **Every new Payload block requires two files.** Every new block must include both `src/blocks/[Name]/config.ts` and `src/blocks/[Name]/Component.tsx`. Do not create one without the other.
+5. **Block slugs must align with render keys.** The `slug` in `config.ts` must exactly match the key used in the `blockComponents` map in `src/blocks/RenderBlocks.tsx` or `src/blocks/RenderArticleBlocks.tsx`.
+6. **Block components do not fetch data directly.** Block components never call `getPayload()` or query data sources directly. Data flows from page-level queries into block props. Exception: `src/blocks/ArchiveBlock/Component.tsx` is a pre-existing approved exception and must not be refactored unless a brief explicitly instructs you to do so.
+7. **Complete the post-block checklist every time.** After creating a new block, add it to the relevant collection or editor registration, update the appropriate renderer, run `pnpm generate:types`, run `pnpm ds:index`, and update `design-system/SUMMARY.md`.
+8. **Tokens change first.** All token changes must go to `src/styles/tokens.css` and `design-system/SUMMARY.md` first, never directly inside a component.
+
+Known exceptions for this phase:
+
+- `src/blocks/ArchiveBlock/Component.tsx` calling `getPayload()` is an approved pre-existing exception.
+- `src/components/ContentRegister/Layout.tsx` contains pre-existing inline spacing styles that are explicitly deferred to a later phase.
+- Existing files in `src/components/ui/` may not yet reference `--ds-*` tokens. Treat token compliance as mandatory for new components added after this phase, not as a retroactive violation for the current library.

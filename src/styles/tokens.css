@@ -1,0 +1,274 @@
+:root {
+  /* === COLOR === */
+
+  /* Brand accent. Links, eyebrows, CTAs, and active states. */
+  --ds-color-brand-accent: #b5451b;
+  /* Brand accent hover. Hover states, muted emphasis, and secondary highlights. */
+  --ds-color-brand-accent-muted: #d4794d;
+
+  /* Editorial paper surface. Article canvases and content register backgrounds. */
+  --ds-color-content-paper: #f5f0e8;
+  /* Editorial inset surface. Callouts, asides, and inline code backgrounds. */
+  --ds-color-content-cream: #ede7d5;
+  /* Editorial ink. Primary headings, strong rules, and anchor text. */
+  --ds-color-content-ink: #0d0d0d;
+  /* Editorial body copy. Hero decks and supporting prose. */
+  --ds-color-content-copy: #3a3530;
+  /* Editorial pull quote. Large quotations and emphasized narrative copy. */
+  --ds-color-content-quote: #2a2520;
+  /* Editorial comment tone. Code comments and tertiary annotations. */
+  --ds-color-content-comment: #6a6050;
+  /* Editorial metadata. Bylines, labels, captions, and helper text. */
+  --ds-color-content-caption: #7a6e5e;
+  /* Editorial rule. Dividers, borders, and stack grid separators. */
+  --ds-color-content-rule: #c8bfa8;
+  /* Editorial code surface. Preformatted blocks and dark technical panels. */
+  --ds-color-content-code-background: #1a1a1a;
+  /* Editorial code foreground. Monospace text on dark technical panels. */
+  --ds-color-content-code-text: #c8bfa8;
+  /* Editorial code highlight. Syntax accents and highlighted inline fragments. */
+  --ds-color-content-code-highlight: #e8a87c;
+  /* Editorial code chrome. Subtle line-number and utility text overlays. */
+  --ds-color-content-code-line-number: rgba(255, 255, 255, 0.25);
+
+  /* App background. Default page canvas in the light theme. */
+  --ds-color-semantic-background: oklch(100% 0 0deg);
+  /* App foreground. Default text color in the light theme. */
+  --ds-color-semantic-foreground: oklch(14.5% 0 0deg);
+  /* Card surface. Elevated containers and cards in the light theme. */
+  --ds-color-semantic-card: oklch(96.5% 0.005 265deg);
+  /* Card foreground. Text rendered on card surfaces in the light theme. */
+  --ds-color-semantic-card-foreground: oklch(14.5% 0 0deg);
+  /* Popover surface. Menus, popovers, and layered panels in the light theme. */
+  --ds-color-semantic-popover: oklch(100% 0 0deg);
+  /* Popover foreground. Text rendered on popovers in the light theme. */
+  --ds-color-semantic-popover-foreground: oklch(14.5% 0 0deg);
+  /* Primary action surface. Prominent buttons and primary controls in the light theme. */
+  --ds-color-semantic-primary: oklch(20.5% 0 0deg);
+  /* Primary action foreground. Text and icons on primary controls in the light theme. */
+  --ds-color-semantic-primary-foreground: oklch(98.5% 0 0deg);
+  /* Secondary surface. Secondary buttons and neutral emphasis in the light theme. */
+  --ds-color-semantic-secondary: oklch(97% 0 0deg);
+  /* Secondary foreground. Text and icons on secondary surfaces in the light theme. */
+  --ds-color-semantic-secondary-foreground: oklch(20.5% 0 0deg);
+  /* Muted surface. Subdued panels and neutral container fills in the light theme. */
+  --ds-color-semantic-muted: oklch(97% 0 0deg);
+  /* Muted foreground. Supporting text on muted surfaces in the light theme. */
+  --ds-color-semantic-muted-foreground: oklch(55.6% 0 0deg);
+  /* Accent surface. Interactive accent fills in the light theme. */
+  --ds-color-semantic-accent: oklch(97% 0 0deg);
+  /* Accent foreground. Text and icons on accent surfaces in the light theme. */
+  --ds-color-semantic-accent-foreground: oklch(20.5% 0 0deg);
+  /* Destructive surface. Dangerous or destructive actions in the light theme. */
+  --ds-color-semantic-destructive: oklch(57.7% 0.245 27.325deg);
+  /* Destructive foreground. Text and icons on destructive surfaces in the light theme. */
+  --ds-color-semantic-destructive-foreground: oklch(57.7% 0.245 27.325deg);
+  /* Interface border. Default dividers and borders in the light theme. */
+  --ds-color-semantic-border: oklch(92.2% 0 0deg);
+  /* Interface input. Input backgrounds and field chrome in the light theme. */
+  --ds-color-semantic-input: oklch(92.2% 0 0deg);
+  /* Interface ring. Focus outlines and ring states in the light theme. */
+  --ds-color-semantic-ring: oklch(70.8% 0 0deg);
+  /* Sidebar surface. Sidebar backgrounds in the light theme. */
+  --ds-color-semantic-sidebar: oklch(98.5% 0 0deg);
+  /* Sidebar foreground. Text and icons on sidebar surfaces in the light theme. */
+  --ds-color-semantic-sidebar-foreground: oklch(14.5% 0 0deg);
+  /* Sidebar primary surface. Primary emphasis within the sidebar in the light theme. */
+  --ds-color-semantic-sidebar-primary: oklch(20.5% 0 0deg);
+  /* Sidebar primary foreground. Text and icons on sidebar primary surfaces in the light theme. */
+  --ds-color-semantic-sidebar-primary-foreground: oklch(98.5% 0 0deg);
+  /* Sidebar accent surface. Secondary emphasis within the sidebar in the light theme. */
+  --ds-color-semantic-sidebar-accent: oklch(97% 0 0deg);
+  /* Sidebar accent foreground. Text and icons on sidebar accent surfaces in the light theme. */
+  --ds-color-semantic-sidebar-accent-foreground: oklch(20.5% 0 0deg);
+  /* Sidebar border. Sidebar dividers and panel edges in the light theme. */
+  --ds-color-semantic-sidebar-border: oklch(92.2% 0 0deg);
+  /* Sidebar ring. Focus styles scoped to sidebar controls in the light theme. */
+  --ds-color-semantic-sidebar-ring: oklch(70.8% 0 0deg);
+  /* Data series one. Primary chart and data visualisation accent. */
+  --ds-color-semantic-chart-1: oklch(64.6% 0.222 41.116deg);
+  /* Data series two. Secondary chart and data visualisation accent. */
+  --ds-color-semantic-chart-2: oklch(60% 0.118 184.704deg);
+  /* Data series three. Tertiary chart and data visualisation accent. */
+  --ds-color-semantic-chart-3: oklch(39.8% 0.07 227.392deg);
+  /* Data series four. Quaternary chart and data visualisation accent. */
+  --ds-color-semantic-chart-4: oklch(82.8% 0.189 84.429deg);
+  /* Data series five. Quinary chart and data visualisation accent. */
+  --ds-color-semantic-chart-5: oklch(76.9% 0.188 70.08deg);
+
+  /* Success state. Positive feedback, confirmations, and success messaging. */
+  --ds-color-status-success: oklch(78% 0.08 200deg);
+  /* Warning state. Cautionary feedback and warning messaging. */
+  --ds-color-status-warning: oklch(89% 0.1 75deg);
+  /* Error state. Failure feedback and error messaging. */
+  --ds-color-status-error: oklch(75% 0.15 25deg);
+
+  /* === TYPOGRAPHY === */
+
+  /* Editorial display serif. Article headlines, pull quotes, and high-emphasis headings. */
+  --ds-font-family-display: var(--font-playfair-display);
+  /* Editorial sans. Body copy, subheads, and general reading text. */
+  --ds-font-family-body: var(--font-instrument-sans);
+  /* Editorial mono. Eyebrows, metadata, and technical content. */
+  --ds-font-family-mono: var(--font-dm-mono);
+  /* UI sans. Application chrome and general interface text. */
+  --ds-font-family-ui-sans: var(--font-geist-sans);
+  /* UI mono. Interface code, diagnostics, and utility labels. */
+  --ds-font-family-ui-mono: var(--font-geist-mono);
+
+  /* Micro type size. Dense labels and compact metadata. */
+  --ds-font-size-2xs: 0.625rem;
+  /* Small label size. Eyebrows, metadata, and compact controls. */
+  --ds-font-size-xs: 0.75rem;
+  /* Supporting text size. Captions, helper copy, and small UI text. */
+  --ds-font-size-sm: 0.875rem;
+  /* Base UI text size. Default application body copy. */
+  --ds-font-size-base: 1rem;
+  /* Editorial body size. Long-form article copy. */
+  --ds-font-size-body: 1.125rem;
+  /* Lead copy size. Introductory decks and emphasized prose. */
+  --ds-font-size-lead: 1.25rem;
+  /* Section heading size. Article section headings and strong subheads. */
+  --ds-font-size-heading: 1.75rem;
+  /* Editorial hero size. Feature titles and marquee headlines. */
+  --ds-font-size-hero: clamp(2.4rem, 5vw, 3.8rem);
+
+  /* Light emphasis weight. Light mono utility text and subtle labels. */
+  --ds-font-weight-light: 300;
+  /* Regular reading weight. Default body copy and long-form text. */
+  --ds-font-weight-regular: 400;
+  /* Medium emphasis weight. UI labels, subheads, and strong metadata. */
+  --ds-font-weight-medium: 500;
+  /* Bold editorial weight. Headlines and high-emphasis type. */
+  --ds-font-weight-bold: 700;
+
+  /* Tight leading. Compact hero headlines and dense title treatments. */
+  --ds-line-height-tight: 1.1;
+  /* Snug leading. Section headings and stacked labels. */
+  --ds-line-height-snug: 1.25;
+  /* Standard reading leading. Default prose rhythm for long-form content. */
+  --ds-line-height-body: 1.75;
+  /* Relaxed lead leading. Introductory decks and pull quotes. */
+  --ds-line-height-relaxed: 1.8;
+  /* Code leading. Monospace blocks and technical content. */
+  --ds-line-height-code: 1.7;
+  /* Quote leading. Pull quotes and emphasized narrative passages. */
+  --ds-line-height-quote: 1.6;
+
+  /* === SPACING === */
+
+  /* Zero spacing. Remove internal or external whitespace. */
+  --ds-spacing-0: 0;
+  /* One grid unit. 4px micro spacing and fine alignment. */
+  --ds-spacing-1: 0.25rem;
+  /* Two grid units. 8px compact spacing and minor separation. */
+  --ds-spacing-2: 0.5rem;
+  /* Three grid units. 12px tight component spacing. */
+  --ds-spacing-3: 0.75rem;
+  /* Four grid units. 16px default UI spacing. */
+  --ds-spacing-4: 1rem;
+  /* Five grid units. 20px comfortable control spacing. */
+  --ds-spacing-5: 1.25rem;
+  /* Six grid units. 24px standard section separation. */
+  --ds-spacing-6: 1.5rem;
+  /* Eight grid units. 32px roomy component spacing. */
+  --ds-spacing-8: 2rem;
+  /* Ten grid units. 40px feature spacing and content breaks. */
+  --ds-spacing-10: 2.5rem;
+  /* Twelve grid units. 48px major section spacing. */
+  --ds-spacing-12: 3rem;
+  /* Sixteen grid units. 64px page-level spacing. */
+  --ds-spacing-16: 4rem;
+  /* Twenty grid units. 80px hero and marquee spacing. */
+  --ds-spacing-20: 5rem;
+
+  /* === RADIUS === */
+
+  /* No radius. Editorial hard edges and squared treatments. */
+  --ds-radius-none: 0;
+  /* Small radius. Inline code and compact element rounding. */
+  --ds-radius-xs: 0.125rem;
+  /* Default radius. Shared application card and field rounding. */
+  --ds-radius-md: 0.625rem;
+
+  /* === SHADOW === */
+
+  /* No shadow. Flat editorial and interface surfaces. */
+  --ds-shadow-none: none;
+  /* Rule shadow. Hairline panel edge using the editorial rule color. */
+  --ds-shadow-rule: 0 0 0 1px var(--ds-color-content-rule);
+}
+
+[data-theme='dark'] {
+  /* App background. Default page canvas in the dark theme. */
+  --ds-color-semantic-background: oklch(14.5% 0 0deg);
+  /* App foreground. Default text color in the dark theme. */
+  --ds-color-semantic-foreground: oklch(98.5% 0 0deg);
+  /* Card surface. Elevated containers and cards in the dark theme. */
+  --ds-color-semantic-card: oklch(17% 0 0deg);
+  /* Card foreground. Text rendered on card surfaces in the dark theme. */
+  --ds-color-semantic-card-foreground: oklch(98.5% 0 0deg);
+  /* Popover surface. Menus, popovers, and layered panels in the dark theme. */
+  --ds-color-semantic-popover: oklch(14.5% 0 0deg);
+  /* Popover foreground. Text rendered on popovers in the dark theme. */
+  --ds-color-semantic-popover-foreground: oklch(98.5% 0 0deg);
+  /* Primary action surface. Prominent buttons and primary controls in the dark theme. */
+  --ds-color-semantic-primary: oklch(98.5% 0 0deg);
+  /* Primary action foreground. Text and icons on primary controls in the dark theme. */
+  --ds-color-semantic-primary-foreground: oklch(20.5% 0 0deg);
+  /* Secondary surface. Secondary buttons and neutral emphasis in the dark theme. */
+  --ds-color-semantic-secondary: oklch(26.9% 0 0deg);
+  /* Secondary foreground. Text and icons on secondary surfaces in the dark theme. */
+  --ds-color-semantic-secondary-foreground: oklch(98.5% 0 0deg);
+  /* Muted surface. Subdued panels and neutral container fills in the dark theme. */
+  --ds-color-semantic-muted: oklch(26.9% 0 0deg);
+  /* Muted foreground. Supporting text on muted surfaces in the dark theme. */
+  --ds-color-semantic-muted-foreground: oklch(70.8% 0 0deg);
+  /* Accent surface. Interactive accent fills in the dark theme. */
+  --ds-color-semantic-accent: oklch(26.9% 0 0deg);
+  /* Accent foreground. Text and icons on accent surfaces in the dark theme. */
+  --ds-color-semantic-accent-foreground: oklch(98.5% 0 0deg);
+  /* Destructive surface. Dangerous or destructive actions in the dark theme. */
+  --ds-color-semantic-destructive: oklch(39.6% 0.141 25.723deg);
+  /* Destructive foreground. Text and icons on destructive surfaces in the dark theme. */
+  --ds-color-semantic-destructive-foreground: oklch(63.7% 0.237 25.331deg);
+  /* Interface border. Default dividers and borders in the dark theme. */
+  --ds-color-semantic-border: oklch(26.9% 0 0deg);
+  /* Interface input. Input backgrounds and field chrome in the dark theme. */
+  --ds-color-semantic-input: oklch(26.9% 0 0deg);
+  /* Interface ring. Focus outlines and ring states in the dark theme. */
+  --ds-color-semantic-ring: oklch(43.9% 0 0deg);
+  /* Sidebar surface. Sidebar backgrounds in the dark theme. */
+  --ds-color-semantic-sidebar: oklch(20.5% 0 0deg);
+  /* Sidebar foreground. Text and icons on sidebar surfaces in the dark theme. */
+  --ds-color-semantic-sidebar-foreground: oklch(98.5% 0 0deg);
+  /* Sidebar primary surface. Primary emphasis within the sidebar in the dark theme. */
+  --ds-color-semantic-sidebar-primary: oklch(48.8% 0.243 264.376deg);
+  /* Sidebar primary foreground. Text and icons on sidebar primary surfaces in the dark theme. */
+  --ds-color-semantic-sidebar-primary-foreground: oklch(98.5% 0 0deg);
+  /* Sidebar accent surface. Secondary emphasis within the sidebar in the dark theme. */
+  --ds-color-semantic-sidebar-accent: oklch(26.9% 0 0deg);
+  /* Sidebar accent foreground. Text and icons on sidebar accent surfaces in the dark theme. */
+  --ds-color-semantic-sidebar-accent-foreground: oklch(98.5% 0 0deg);
+  /* Sidebar border. Sidebar dividers and panel edges in the dark theme. */
+  --ds-color-semantic-sidebar-border: oklch(26.9% 0 0deg);
+  /* Sidebar ring. Focus styles scoped to sidebar controls in the dark theme. */
+  --ds-color-semantic-sidebar-ring: oklch(43.9% 0 0deg);
+  /* Data series one. Primary chart and data visualisation accent in the dark theme. */
+  --ds-color-semantic-chart-1: oklch(48.8% 0.243 264.376deg);
+  /* Data series two. Secondary chart and data visualisation accent in the dark theme. */
+  --ds-color-semantic-chart-2: oklch(69.6% 0.17 162.48deg);
+  /* Data series three. Tertiary chart and data visualisation accent in the dark theme. */
+  --ds-color-semantic-chart-3: oklch(76.9% 0.188 70.08deg);
+  /* Data series four. Quaternary chart and data visualisation accent in the dark theme. */
+  --ds-color-semantic-chart-4: oklch(62.7% 0.265 303.9deg);
+  /* Data series five. Quinary chart and data visualisation accent in the dark theme. */
+  --ds-color-semantic-chart-5: oklch(64.5% 0.246 16.439deg);
+
+  /* Success state. Positive feedback, confirmations, and success messaging in the dark theme. */
+  --ds-color-status-success: oklch(28% 0.1 200deg);
+  /* Warning state. Cautionary feedback and warning messaging in the dark theme. */
+  --ds-color-status-warning: oklch(35% 0.08 70deg);
+  /* Error state. Failure feedback and error messaging in the dark theme. */
+  --ds-color-status-error: oklch(45% 0.1 25deg);
+}

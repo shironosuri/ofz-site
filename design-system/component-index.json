@@ -1,0 +1,150 @@
+{
+  "generated": "2026-04-09T12:09:21.180Z",
+  "ui": [
+    {
+      "name": "avatar",
+      "path": "src/components/ui/avatar.tsx"
+    },
+    {
+      "name": "badge",
+      "path": "src/components/ui/badge.tsx"
+    },
+    {
+      "name": "button",
+      "path": "src/components/ui/button.tsx"
+    },
+    {
+      "name": "card",
+      "path": "src/components/ui/card.tsx"
+    },
+    {
+      "name": "checkbox",
+      "path": "src/components/ui/checkbox.tsx"
+    },
+    {
+      "name": "dialog",
+      "path": "src/components/ui/dialog.tsx"
+    },
+    {
+      "name": "input",
+      "path": "src/components/ui/input.tsx"
+    },
+    {
+      "name": "label",
+      "path": "src/components/ui/label.tsx"
+    },
+    {
+      "name": "pagination",
+      "path": "src/components/ui/pagination.tsx"
+    },
+    {
+      "name": "select",
+      "path": "src/components/ui/select.tsx"
+    },
+    {
+      "name": "separator",
+      "path": "src/components/ui/separator.tsx"
+    },
+    {
+      "name": "sheet",
+      "path": "src/components/ui/sheet.tsx"
+    },
+    {
+      "name": "textarea",
+      "path": "src/components/ui/textarea.tsx"
+    }
+  ],
+  "blocks": [
+    {
+      "slug": "archive",
+      "dir": "ArchiveBlock",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "page"
+    },
+    {
+      "slug": "articleAside",
+      "dir": "ArticleAside",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "inline"
+    },
+    {
+      "slug": "articleCallout",
+      "dir": "ArticleCallout",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "inline"
+    },
+    {
+      "slug": "articleStackGrid",
+      "dir": "ArticleStackGrid",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "inline"
+    },
+    {
+      "slug": "banner",
+      "dir": "Banner",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "inline"
+    },
+    {
+      "slug": "cta",
+      "dir": "CallToAction",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "page"
+    },
+    {
+      "slug": "code",
+      "dir": "Code",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "inline"
+    },
+    {
+      "slug": "content",
+      "dir": "Content",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "page"
+    },
+    {
+      "slug": "dividerBlock",
+      "dir": "DividerBlock",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "article"
+    },
+    {
+      "slug": "formBlock",
+      "dir": "Form",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "page"
+    },
+    {
+      "slug": "mediaBlock",
+      "dir": "MediaBlock",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "both"
+    },
+    {
+      "slug": "richTextSection",
+      "dir": "RichTextSection",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "article"
+    },
+    {
+      "slug": "stepSection",
+      "dir": "StepSection",
+      "hasConfig": true,
+      "hasComponent": true,
+      "type": "article"
+    }
+  ]
+}

@@ -47,6 +47,7 @@ export const RenderBlocks: React.FC<{
               )
             }
           }
+          console.warn(`RenderBlocks: unknown blockType "${blockType}"`)
           return null
         })}
       </Fragment>
