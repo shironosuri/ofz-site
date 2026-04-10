@@ -224,21 +224,23 @@ Current block inventory from `design-system/component-index.json` and the live c
 - `inline`: in `src/blocks/sharedBodyEditor.ts`
 - `both`: reused in more than one registration surface
 
-| Slug | Type | Key fields | Notes |
+<!-- DS:BLOCKS:START -->
+| Slug | Dir | Surfaces | Purpose |
 |---|---|---|---|
-| `archive` | `page` | `introContent`, `populateBy`, `relationTo`, `categories`, `limit`, `selectedDocs` | General-site archive/feed block for page layouts. Filters or hand-picks posts. |
-| `cta` | `page` | `richText`, `links` | General-site call-to-action block for page layouts. |
-| `content` | `page` | `columns[size, richText, enableLink, link]` | General-site multi-column rich text block for page layouts. |
-| `formBlock` | `page` | `form`, `enableIntro`, `introContent` | General-site embedded Payload form block for page layouts. |
-| `mediaBlock` | `both` | `media` | Reusable media block available in page layouts and inline rich text. |
-| `richTextSection` | `article` | `heading`, `sectionSlug`, `body` | Article top-level prose section. Content register context. |
-| `stepSection` | `article` | `stepLabel`, `stepHeader`, `sectionSlug`, `body` | Article top-level step/narrative section. Content register context. |
-| `dividerBlock` | `article` | no fields | Article-only divider between top-level sections. Content register context. |
-| `articleCallout` | `inline` | `quote`, `cite` | Inline article callout block available inside shared rich text editors. |
-| `articleAside` | `inline` | `style`, `content` | Inline article aside/note block available inside shared rich text editors. |
-| `articleStackGrid` | `inline` | `items[label, name, description]` | Inline article comparison/list grid for shared rich text editors. |
-| `banner` | `inline` | `style`, `content` | Inline semantic banner block for shared rich text editors. |
-| `code` | `inline` | `language`, `code` | Inline code sample block for shared rich text editors. |
+| `archive` | `ArchiveBlock` | `page` | Displays a hand-picked or filtered archive of posts with optional intro copy. |
+| `articleAside` | `ArticleAside` | `inline` | Displays a styled inline aside with an icon and supporting rich text. |
+| `articleCallout` | `ArticleCallout` | `inline` | Displays a quoted callout with an optional citation inside article body text. |
+| `articleStackGrid` | `ArticleStackGrid` | `inline` | Displays grouped comparison or reference items in a stacked grid within article body text. |
+| `banner` | `Banner` | `inline` | Displays an inline status or announcement banner inside article body text. |
+| `cta` | `CallToAction` | `page` | Prompts a next action with short rich text and one or more links. |
+| `code` | `Code` | `inline` | Displays a syntax-highlighted code sample inside article body text. |
+| `content` | `Content` | `page` | Arranges page-level rich text and optional links in configurable editorial columns. |
+| `dividerBlock` | `DividerBlock` | `article` | Inserts a simple horizontal divider between article sections. |
+| `formBlock` | `Form` | `page` | Embeds a Payload-managed form with optional intro copy and confirmation handling. |
+| `mediaBlock` | `MediaBlock` | `page + inline` | Displays a single media asset with an optional rich-text caption. |
+| `richTextSection` | `RichTextSection` | `article` | Renders an article section with a heading and long-form rich text. |
+| `stepSection` | `StepSection` | `article` | Renders a labeled step section with a heading and rich text body in an article. |
+<!-- DS:BLOCKS:END -->
 
 ## Block Creation Checklist
 
