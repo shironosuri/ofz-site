@@ -57,6 +57,7 @@ const STAGE_ORDER = {
   article: ['richTextSection', 'dividerBlock', 'stepSection'],
   inline: ['banner', 'code', 'articleCallout', 'articleAside', 'articleStackGrid'],
 } as const
+const EXPECTED_STAGE_SEQUENCE = Object.keys(STAGE_ORDER) as Array<keyof typeof STAGE_ORDER>
 
 const ALL_BLOCK_SLUGS = [
   ...STAGE_ORDER.page,
@@ -114,6 +115,8 @@ function normalizedText(content: string): string {
 }
 
 function extractStageMarkup(content: string, surface: keyof typeof STAGE_ORDER): string | null {
+  // This relies on the P4 resolved decision that stages render in DOM order:
+  // page first, article second, inline third.
   const markers = Object.keys(STAGE_ORDER).map((key) => ({
     surface: key as keyof typeof STAGE_ORDER,
     index: content.indexOf(`data-preview-surface="${key}"`),
@@ -260,7 +263,7 @@ if (pageResponse.body) {
     detailList(missingPrimitiveLabels),
   )
 
-  const missingStageMarkers = (Object.keys(STAGE_ORDER) as Array<keyof typeof STAGE_ORDER>).filter(
+  const missingStageMarkers = EXPECTED_STAGE_SEQUENCE.filter(
     (surface) => !body.includes(`data-preview-surface="${surface}"`),
   )
   check(
@@ -269,7 +272,17 @@ if (pageResponse.body) {
     detailList(missingStageMarkers),
   )
 
-  for (const surface of Object.keys(STAGE_ORDER) as Array<keyof typeof STAGE_ORDER>) {
+  const stageMarkerSequence = Array.from(
+    body.matchAll(/data-preview-surface="(page|article|inline)"/g),
+    (match) => match[1] ?? '',
+  )
+  check(
+    'Stage markers appear in page, article, inline DOM order',
+    arraysEqual(stageMarkerSequence, EXPECTED_STAGE_SEQUENCE),
+    `Expected ${EXPECTED_STAGE_SEQUENCE.join(', ')}; found ${stageMarkerSequence.join(', ') || '(none)'}`,
+  )
+
+  for (const surface of EXPECTED_STAGE_SEQUENCE) {
     const stageMarkup = extractStageMarkup(body, surface) ?? ''
     const actualSlugs = findBlockSlugs(stageMarkup)
     const expectedSlugs = STAGE_ORDER[surface]
@@ -316,8 +329,9 @@ if (pageResponse.body) {
   check('Typography section contains the line-height labels', false, 'No HTML response available')
   check('Response contains the UI primitive labels', false, 'No HTML response available')
   check('Response contains the three contextual stage markers', false, 'No HTML response available')
+  check('Stage markers appear in page, article, inline DOM order', false, 'No HTML response available')
 
-  for (const surface of Object.keys(STAGE_ORDER) as Array<keyof typeof STAGE_ORDER>) {
+  for (const surface of EXPECTED_STAGE_SEQUENCE) {
     check(`${surface} stage block order matches the resolved decision`, false, 'No HTML response available')
   }
 

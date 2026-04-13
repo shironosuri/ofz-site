@@ -22,7 +22,7 @@ type EditorStateInput = Parameters<typeof buildEditorState>[0]
 
 const sampleMedia = {
   id: 999,
-  alt: 'Editorial still life used for the design system reference page.',
+  alt: 'Marked-up article proof, palette swatches, and a notebook on a worktable.',
   caption: buildEditorState({
     nodes: [
       {
@@ -34,7 +34,7 @@ const sampleMedia = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'Sample media caption set in Payload-style rich text to show the live caption treatment.',
+            text: 'A marked-up article proof beside paper swatches and a notebook, used here to show the live media caption treatment inside a page surface.',
             version: 1,
           },
         ],
@@ -61,7 +61,7 @@ const sampleMedia = {
 
 export const bannerSample: BannerBlock = {
   blockType: 'banner',
-  style: 'warning',
+  style: 'info',
   content: buildEditorState({
     nodes: [
       {
@@ -73,7 +73,7 @@ export const bannerSample: BannerBlock = {
             format: 1,
             mode: 'normal',
             style: '',
-            text: 'Reference note:',
+            text: 'Surface note:',
             version: 1,
           },
           {
@@ -82,7 +82,7 @@ export const bannerSample: BannerBlock = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: ' this page shows live block output, not approximations.',
+            text: ' the previews below use real block output inside staged reading contexts, not detached demo cards.',
             version: 1,
           },
         ],
@@ -98,8 +98,8 @@ export const bannerSample: BannerBlock = {
 
 export const articleCalloutSample: ArticleCalloutBlock = {
   blockType: 'articleCallout',
-  quote: 'The design system should make the right decision feel obvious, not decorative.',
-  cite: 'Editorial systems note',
+  quote: 'A reference page only becomes trustworthy once the block inherits the surface it was designed for.',
+  cite: 'OFZ design system review',
 }
 
 export const articleAsideSample: ArticleAsideBlock = {
@@ -116,7 +116,7 @@ export const articleAsideSample: ArticleAsideBlock = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'Use article asides for supporting context that should stay visibly secondary to the main argument.',
+            text: 'Use an aside when the reader needs a practical note or constraint without losing the main line of the article.',
             version: 1,
           },
         ],
@@ -134,19 +134,19 @@ export const articleStackGridSample: ArticleStackGridBlock = {
   blockType: 'articleStackGrid',
   items: [
     {
-      label: 'Tone',
-      name: 'Editorial',
-      description: 'Use for narrative voice, context, and paced reading.',
+      label: 'Signal',
+      name: 'Orientation',
+      description: 'Set the reader’s expectation before a section changes pace or scope.',
     },
     {
-      label: 'Tone',
-      name: 'Utility',
-      description: 'Use for controls, labels, and compact interface language.',
+      label: 'Signal',
+      name: 'Evidence',
+      description: 'Bring in examples, references, or supporting detail without derailing the thread.',
     },
     {
-      label: 'Tone',
-      name: 'Technical',
-      description: 'Use for code, diagnostics, and dense reference content.',
+      label: 'Signal',
+      name: 'Decision',
+      description: 'Close with the practical implication so the comparison ends in an editorial choice.',
     },
   ],
 }
@@ -154,8 +154,14 @@ export const articleStackGridSample: ArticleStackGridBlock = {
 export const codeBlockSample: CodeBlockProps = {
   blockType: 'code',
   language: 'typescript',
-  code: `export function mapDecision(input: 'page' | 'block') {
-  return input === 'page' ? 'standalone route' : 'editorial reuse'
+  code: `const stageOrder = {
+  page: ['content', 'mediaBlock', 'archive', 'cta', 'formBlock'],
+  article: ['richTextSection', 'dividerBlock', 'stepSection'],
+  inline: ['banner', 'code', 'articleCallout', 'articleAside', 'articleStackGrid'],
+} as const
+
+export function getPreviewSurface(slug: keyof typeof stageOrder.page) {
+  return Object.entries(stageOrder).find(([, blocks]) => blocks.includes(slug as never))?.[0]
 }`,
 }
 
@@ -172,7 +178,7 @@ export const callToActionSample: CallToActionBlock = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'Turn a reference page into an implementation plan.',
+            text: 'Plan the page before opening the editor.',
             version: 1,
           },
         ],
@@ -191,7 +197,7 @@ export const callToActionSample: CallToActionBlock = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'Use the current block inventory first, then add only what the system genuinely lacks.',
+            text: 'Start with the current block set, stage it against the reading surface, and only then decide whether the system is actually missing anything.',
             version: 1,
           },
         ],
@@ -207,7 +213,7 @@ export const callToActionSample: CallToActionBlock = {
     {
       link: {
         type: 'custom',
-        label: 'Review blocks',
+        label: 'Review stage order',
         url: '#blocks',
         appearance: 'default',
       },
@@ -215,8 +221,8 @@ export const callToActionSample: CallToActionBlock = {
     {
       link: {
         type: 'custom',
-        label: 'Scan typography',
-        url: '#typography',
+        label: 'Inspect palette',
+        url: '#colors',
         appearance: 'outline',
       },
     },
@@ -239,7 +245,7 @@ export const contentBlockSample: ContentBlock = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'A page-level content block can mix framing copy, explanation, and links.',
+                text: 'The strongest pages feel edited before they feel designed.',
                 version: 1,
               },
             ],
@@ -265,7 +271,7 @@ export const contentBlockSample: ContentBlock = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Context',
+                text: 'Framing',
                 version: 1,
               },
             ],
@@ -284,7 +290,7 @@ export const contentBlockSample: ContentBlock = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Use a narrow column when the copy needs to read as a concise setup rather than a full section.',
+                text: 'Open with the smallest amount of context required to tell the reader what this page is trying to do.',
                 version: 1,
               },
             ],
@@ -310,7 +316,7 @@ export const contentBlockSample: ContentBlock = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Argument',
+                text: 'Evidence',
                 version: 1,
               },
             ],
@@ -329,7 +335,7 @@ export const contentBlockSample: ContentBlock = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'The content block works best when text needs editorial rhythm without requiring a bespoke layout.',
+                text: 'Use the middle column for proof: a concrete example, a reference, or a claim the next block will deepen.',
                 version: 1,
               },
             ],
@@ -344,8 +350,8 @@ export const contentBlockSample: ContentBlock = {
       enableLink: true,
       link: {
         type: 'custom',
-        label: 'See color palette',
-        url: '#colors',
+        label: 'See stage preview',
+        url: '#blocks',
         appearance: 'default',
       },
     },
@@ -362,7 +368,7 @@ export const contentBlockSample: ContentBlock = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Decision',
+                text: 'Next move',
                 version: 1,
               },
             ],
@@ -381,7 +387,7 @@ export const contentBlockSample: ContentBlock = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'If the need is heading plus copy plus optional action, reuse this before proposing a new block.',
+                text: 'Close with the action or decision the reader should make after the framing and evidence are in place.',
                 version: 1,
               },
             ],
@@ -418,7 +424,7 @@ export const archiveBlockSample: ArchiveBlock = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'Live archive preview',
+            text: 'Recent pieces from the seeded archive',
             version: 1,
           },
         ],
@@ -437,7 +443,7 @@ export const archiveBlockSample: ArchiveBlock = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'This block fetches real posts from the running local Payload instance.',
+            text: 'This preview pulls real posts from the running local Payload instance so the page stage stays honest about live archive output.',
             version: 1,
           },
         ],
@@ -465,7 +471,7 @@ export const formBlockSample: FormBlockType & { blockType: 'formBlock' } = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'Fallback form state',
+            text: 'Minimal form preview',
             version: 1,
           },
         ],
@@ -484,7 +490,7 @@ export const formBlockSample: FormBlockType & { blockType: 'formBlock' } = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'This preview intentionally passes an empty field list so the block renders its minimal state without requiring a seeded form.',
+            text: 'This preview keeps the form sample-backed and intentionally empty so the block frame is visible without relying on live CMS form records.',
             version: 1,
           },
         ],
@@ -498,9 +504,9 @@ export const formBlockSample: FormBlockType & { blockType: 'formBlock' } = {
   } as unknown as EditorStateInput) as FormBlockType['introContent'],
   form: {
     id: 'reference-form',
-    title: 'Reference Form',
+    title: 'Newsletter Interest',
     fields: [],
-    submitButtonLabel: 'Submit',
+    submitButtonLabel: 'Join the list',
     confirmationType: 'message',
     emails: [],
     confirmationMessage: buildEditorState({
@@ -531,7 +537,7 @@ export const formBlockSample: FormBlockType & { blockType: 'formBlock' } = {
 
 export const richTextSectionSample: RichTextSection = {
   blockType: 'richTextSection',
-  heading: 'Typography should carry argument, not just ornament.',
+  heading: 'Surface cues tell the reader what kind of attention to bring.',
   body: buildEditorState({
     nodes: [
       {
@@ -543,7 +549,7 @@ export const richTextSectionSample: RichTextSection = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'Use a rich text section when the reader needs a clearly signposted editorial segment with enough room for explanation.',
+            text: 'A good article surface does not rely on novelty. It relies on a stable reading rhythm, clear hierarchy, and enough space for the argument to unfold without visual noise.',
             version: 1,
           },
         ],
@@ -562,7 +568,7 @@ export const richTextSectionSample: RichTextSection = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'The point of the section is not decoration. It is pacing, hierarchy, and a reliable place for longer-form reasoning.',
+            text: 'That is why section-level blocks should be previewed inside a believable article register. Without it, the hierarchy flattens and the block starts to read like a fragment rather than a section.',
             version: 1,
           },
         ],
@@ -578,8 +584,8 @@ export const richTextSectionSample: RichTextSection = {
 
 export const stepSectionSample: StepSection = {
   blockType: 'stepSection',
-  stepLabel: 'Step 02',
-  stepHeader: 'Match the block to the editorial job.',
+  stepLabel: 'Step 03',
+  stepHeader: 'Stage the block where it will actually be read.',
   body: buildEditorState({
     nodes: [
       {
@@ -591,7 +597,7 @@ export const stepSectionSample: StepSection = {
             format: 0,
             mode: 'normal',
             style: '',
-            text: 'A step section works when the sequence matters and each section should feel like a deliberate stage in the reader’s progress.',
+            text: 'Before adding a new pattern, place the existing block inside a truthful page, article, or inline surface. A large share of “missing block” requests disappear once the context is correct.',
             version: 1,
           },
         ],
