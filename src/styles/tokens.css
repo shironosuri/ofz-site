@@ -62,7 +62,7 @@
   /* Destructive surface. Dangerous or destructive actions in the light theme. */
   --ds-color-semantic-destructive: oklch(57.7% 0.245 27.325deg);
   /* Destructive foreground. Text and icons on destructive surfaces in the light theme. */
-  --ds-color-semantic-destructive-foreground: oklch(57.7% 0.245 27.325deg);
+  --ds-color-semantic-destructive-foreground: oklch(98.5% 0 0deg);
   /* Interface border. Default dividers and borders in the light theme. */
   --ds-color-semantic-border: oklch(92.2% 0 0deg);
   /* Interface input. Input backgrounds and field chrome in the light theme. */
@@ -231,7 +231,7 @@
   /* Destructive surface. Dangerous or destructive actions in the dark theme. */
   --ds-color-semantic-destructive: oklch(39.6% 0.141 25.723deg);
   /* Destructive foreground. Text and icons on destructive surfaces in the dark theme. */
-  --ds-color-semantic-destructive-foreground: oklch(63.7% 0.237 25.331deg);
+  --ds-color-semantic-destructive-foreground: oklch(14.5% 0 0deg);
   /* Interface border. Default dividers and borders in the dark theme. */
   --ds-color-semantic-border: oklch(26.9% 0 0deg);
   /* Interface input. Input backgrounds and field chrome in the dark theme. */

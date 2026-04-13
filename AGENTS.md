@@ -1190,3 +1190,9 @@ Known exceptions for this phase:
 
 - `src/blocks/ArchiveBlock/Component.tsx` calling `getPayload()` is an approved pre-existing exception.
 - `src/components/ContentRegister/Layout.tsx` contains pre-existing inline spacing styles that are explicitly deferred to a later phase.
+
+## Visual Tone
+This project serves creative professionals (artists, writers, musicians).
+Components should feel editorial and considered, not utilitarian.
+Prefer generous whitespace, typographic hierarchy, and restraint over
+feature-dense layouts. When in doubt, do less.

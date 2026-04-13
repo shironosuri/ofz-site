@@ -881,11 +881,11 @@ export default function DesignSystemElementsPage() {
             surface="page"
             title="Page-level blocks need the room and pacing of a full-page surface."
           >
-            <div className="space-y-8">
+            <div className="space-y-12 pt-8">
               {pageStageOrder.map((slug, index) => (
                 <div
                   key={slug}
-                  className={index === 0 ? '' : 'border-t border-content-rule/70 pt-8'}
+                  className={index === 0 ? 'pt-8' : 'border-t border-content-rule/70 pt-12'}
                 >
                   <BlockPreview block={blockLookup[slug]}>
                     <div className="overflow-hidden rounded-[1.5rem] border border-content-rule bg-background">
@@ -907,9 +907,9 @@ export default function DesignSystemElementsPage() {
             surface="article"
             title="Article-surface blocks need editorial hierarchy and paper context."
           >
-            <div className="rounded-[1.75rem] border border-content-rule bg-content-paper p-4 md:p-6">
+            <div className="rounded-[1.75rem] border border-content-rule bg-content-paper p-6 md:p-8">
               <div className="content-register">
-                <div className="mx-auto max-w-[860px] px-4 pb-8 pt-2 md:px-8 md:pb-10">
+                <div className="mx-auto max-w-[860px] px-4 pb-12 pt-4 md:px-8 md:pb-16">
                   <header className="border-b border-content-rule pb-8">
                     <p className="hero-eyebrow">Article Surface</p>
                     <h1>Section-level blocks read best when the surrounding article rhythm is intact.</h1>
@@ -920,10 +920,10 @@ export default function DesignSystemElementsPage() {
                     <p className="byline">Reference preview · long-form article shell</p>
                   </header>
 
-                  <div className="mt-10 space-y-10">
+                  <div className="mt-12 space-y-12">
                     {articleStageOrder.map((slug) => (
                       <BlockPreview key={slug} block={blockLookup[slug]}>
-                        <div className="mt-4">{blockPreviews[slug]}</div>
+                        <div className="mt-6">{blockPreviews[slug]}</div>
                       </BlockPreview>
                     ))}
                   </div>
@@ -940,14 +940,14 @@ export default function DesignSystemElementsPage() {
           >
             <div className="rounded-[1.75rem] border border-border bg-background p-6 md:p-8">
               <div className="content-register">
-                <div className="mx-auto max-w-[720px] px-0 pb-2 pt-0">
+                <div className="mx-auto max-w-[720px] px-0 pb-4 pt-2">
                   <p>
                     Most inline patterns earn their place by interrupting the paragraph for a
                     reason: to warn, demonstrate, quote, or summarize without breaking the whole
                     editorial current.
                   </p>
 
-                  <div className="my-8">
+                  <div className="my-8 py-4">
                     <BlockPreview block={blockLookup.banner}>
                       {blockPreviews.banner}
                     </BlockPreview>
@@ -959,11 +959,11 @@ export default function DesignSystemElementsPage() {
                     clearly subordinate to the main line of argument.
                   </p>
 
-                  <div className="my-8">
+                  <div className="my-8 py-4">
                     <BlockPreview block={blockLookup.code}>{blockPreviews.code}</BlockPreview>
                   </div>
 
-                  <div className="my-8">
+                  <div className="my-8 py-4">
                     <BlockPreview block={blockLookup.articleCallout}>
                       {blockPreviews.articleCallout}
                     </BlockPreview>
@@ -974,13 +974,13 @@ export default function DesignSystemElementsPage() {
                     feel like it belongs to the prose column rather than a separate feature panel.
                   </p>
 
-                  <div className="my-8">
+                  <div className="my-8 py-4">
                     <BlockPreview block={blockLookup.articleAside}>
                       {blockPreviews.articleAside}
                     </BlockPreview>
                   </div>
 
-                  <div className="my-8">
+                  <div className="my-8 py-4">
                     <BlockPreview block={blockLookup.articleStackGrid}>
                       {blockPreviews.articleStackGrid}
                     </BlockPreview>
