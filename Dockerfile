@@ -30,6 +30,11 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+# Regenerate the admin import map so newly added plugins/components
+# (e.g. storage adapters) resolve at runtime, even if a committed
+# importMap.js is stale.
+RUN corepack enable pnpm && pnpm payload generate:importmap
+
 # Apply Payload migrations before build, since static generation queries
 # the database and fails against a fresh, un-migrated database.
 RUN corepack enable pnpm && pnpm payload migrate
