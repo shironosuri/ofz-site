@@ -1,0 +1,139 @@
+{
+  "generated": "2026-04-11T07:37:11.904Z",
+  "blocks": [
+    {
+      "slug": "archive",
+      "dir": "ArchiveBlock",
+      "surfaces": [
+        "page"
+      ],
+      "purpose": "Displays a hand-picked or filtered archive of posts with optional intro copy.",
+      "composesWith": [
+        "content",
+        "mediaBlock",
+        "cta"
+      ]
+    },
+    {
+      "slug": "articleAside",
+      "dir": "ArticleAside",
+      "surfaces": [
+        "inline"
+      ],
+      "purpose": "Displays a styled inline aside with an icon and supporting rich text.",
+      "composesWith": []
+    },
+    {
+      "slug": "articleCallout",
+      "dir": "ArticleCallout",
+      "surfaces": [
+        "inline"
+      ],
+      "purpose": "Displays a quoted callout with an optional citation inside article body text.",
+      "composesWith": []
+    },
+    {
+      "slug": "articleStackGrid",
+      "dir": "ArticleStackGrid",
+      "surfaces": [
+        "inline"
+      ],
+      "purpose": "Displays grouped comparison or reference items in a stacked grid within article body text.",
+      "composesWith": []
+    },
+    {
+      "slug": "banner",
+      "dir": "Banner",
+      "surfaces": [
+        "inline"
+      ],
+      "purpose": "Displays an inline status or announcement banner inside article body text.",
+      "composesWith": []
+    },
+    {
+      "slug": "cta",
+      "dir": "CallToAction",
+      "surfaces": [
+        "page"
+      ],
+      "purpose": "Prompts a next action with short rich text and one or more links.",
+      "composesWith": [
+        "content",
+        "mediaBlock",
+        "archive"
+      ]
+    },
+    {
+      "slug": "code",
+      "dir": "Code",
+      "surfaces": [
+        "inline"
+      ],
+      "purpose": "Displays a syntax-highlighted code sample inside article body text.",
+      "composesWith": []
+    },
+    {
+      "slug": "content",
+      "dir": "Content",
+      "surfaces": [
+        "page"
+      ],
+      "purpose": "Arranges page-level rich text and optional links in configurable editorial columns.",
+      "composesWith": [
+        "mediaBlock",
+        "archive",
+        "cta"
+      ]
+    },
+    {
+      "slug": "dividerBlock",
+      "dir": "DividerBlock",
+      "surfaces": [
+        "article"
+      ],
+      "purpose": "Inserts a simple horizontal divider between article sections.",
+      "composesWith": []
+    },
+    {
+      "slug": "formBlock",
+      "dir": "Form",
+      "surfaces": [
+        "page"
+      ],
+      "purpose": "Embeds a Payload-managed form with optional intro copy and confirmation handling.",
+      "composesWith": []
+    },
+    {
+      "slug": "mediaBlock",
+      "dir": "MediaBlock",
+      "surfaces": [
+        "page",
+        "inline"
+      ],
+      "purpose": "Displays a single media asset with an optional rich-text caption.",
+      "composesWith": [
+        "content",
+        "archive",
+        "cta"
+      ]
+    },
+    {
+      "slug": "richTextSection",
+      "dir": "RichTextSection",
+      "surfaces": [
+        "article"
+      ],
+      "purpose": "Renders an article section with a heading and long-form rich text.",
+      "composesWith": []
+    },
+    {
+      "slug": "stepSection",
+      "dir": "StepSection",
+      "surfaces": [
+        "article"
+      ],
+      "purpose": "Renders a labeled step section with a heading and rich text body in an article.",
+      "composesWith": []
+    }
+  ]
+}

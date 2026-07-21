@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import '../../styles/tokens.css';
 
 @config '../../../tailwind.config.mjs';
 
@@ -102,7 +103,7 @@
   --accent: oklch(97% 0 0deg);
   --accent-foreground: oklch(20.5% 0 0deg);
   --destructive: oklch(57.7% 0.245 27.325deg);
-  --destructive-foreground: oklch(57.7% 0.245 27.325deg);
+  --destructive-foreground: oklch(98.5% 0 0deg);
   --border: oklch(92.2% 0 0deg);
   --input: oklch(92.2% 0 0deg);
   --ring: oklch(70.8% 0 0deg);
@@ -141,7 +142,7 @@
   --accent: oklch(26.9% 0 0deg);
   --accent-foreground: oklch(98.5% 0 0deg);
   --destructive: oklch(39.6% 0.141 25.723deg);
-  --destructive-foreground: oklch(63.7% 0.237 25.331deg);
+  --destructive-foreground: oklch(14.5% 0 0deg);
   --border: oklch(26.9% 0 0deg);
   --input: oklch(26.9% 0 0deg);
   --ring: oklch(43.9% 0 0deg);
@@ -203,6 +204,38 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
+  /* DS color aliases - maps --ds-* tokens to Tailwind utility classes */
+  /* Usage: text-brand-accent, bg-content-paper, border-content-rule, etc. */
+  --color-brand-accent: var(--ds-color-brand-accent);
+  --color-brand-accent-muted: var(--ds-color-brand-accent-muted);
+  --color-content-paper: var(--ds-color-content-paper);
+  --color-content-cream: var(--ds-color-content-cream);
+  --color-content-ink: var(--ds-color-content-ink);
+  --color-content-copy: var(--ds-color-content-copy);
+  --color-content-quote: var(--ds-color-content-quote);
+  --color-content-comment: var(--ds-color-content-comment);
+  --color-content-caption: var(--ds-color-content-caption);
+  --color-content-rule: var(--ds-color-content-rule);
+  --color-content-code-bg: var(--ds-color-content-code-background);
+  --color-content-code-text: var(--ds-color-content-code-text);
+  --color-content-code-highlight: var(--ds-color-content-code-highlight);
+  /* DS typography aliases - maps --ds-* tokens to Tailwind utility classes */
+  --font-display: var(--ds-font-family-display);
+  --font-body: var(--ds-font-family-body);
+  --font-mono: var(--ds-font-family-mono);
+  --font-ui-sans: var(--ds-font-family-ui-sans);
+  --font-ui-mono: var(--ds-font-family-ui-mono);
+  --text-2xs: var(--ds-font-size-2xs);
+  --text-body: var(--ds-font-size-body);
+  --text-lead: var(--ds-font-size-lead);
+  --text-heading: var(--ds-font-size-heading);
+  --text-hero: var(--ds-font-size-hero);
+  --leading-tight: var(--ds-line-height-tight);
+  --leading-snug: var(--ds-line-height-snug);
+  --leading-relaxed: var(--ds-line-height-relaxed);
+  --leading-body: var(--ds-line-height-body);
+  --leading-code: var(--ds-line-height-code);
+  --leading-quote: var(--ds-line-height-quote);
 }
 
 @layer base {

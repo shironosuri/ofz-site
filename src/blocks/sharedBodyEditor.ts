@@ -8,12 +8,12 @@ import {
   UnorderedListFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
-import { ArticleCallout } from '../../blocks/ArticleCallout/config'
-import { ArticleAside } from '../../blocks/ArticleAside/config'
-import { ArticleStackGrid } from '../../blocks/ArticleStackGrid/config'
-import { Banner } from '../../blocks/Banner/config'
-import { Code } from '../../blocks/Code/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { ArticleCallout } from '@/blocks/ArticleCallout/config'
+import { ArticleAside } from '@/blocks/ArticleAside/config'
+import { ArticleStackGrid } from '@/blocks/ArticleStackGrid/config'
+import { Banner } from '@/blocks/Banner/config'
+import { Code } from '@/blocks/Code/config'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
 
 export const getSharedBodyEditorConfig = () => {
   return lexicalEditor({

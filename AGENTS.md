@@ -1139,3 +1139,60 @@ For deeper exploration of specific topics, refer to the context files located in
 - GitHub: https://github.com/payloadcms/payload
 - Examples: https://github.com/payloadcms/payload/tree/main/examples
 - Templates: https://github.com/payloadcms/payload/tree/main/templates
+
+## Design System
+
+Use `design-system/SUMMARY.md` as the quick-reference source for the current token tables, installed primitives, and block registry. Use `design-system/component-index.json` before building anything new. Use `design-system/block-catalog.json` for full block metadata (surfaces, purpose). Prefer this over `component-index.json` for surface-related queries. For composition guidance (`whenToUse`, `composesWith`), read `src/blocks/[Name]/meta.ts` directly.
+
+1. **No raw colour values.** All colours must come from `--ds-*` CSS variables defined in `src/styles/tokens.css`. Do not introduce new hex values, `rgb()` values, or ad hoc colour decisions in components.
+2. **No raw spacing values.** Use the Tailwind spacing scale or the spacing tokens documented in `src/styles/tokens.css` and `design-system/SUMMARY.md`. Do not add arbitrary spacing values like `p-[37px]` or inline numeric spacing styles in new work.
+3. **Check existing components before creating new ones.** Before creating any UI element, check `design-system/component-index.json`, then `src/components/ui/`, then `src/blocks/`.
+4. **Every new Payload block requires three files.** Every new block must include `src/blocks/[Name]/config.ts`, `src/blocks/[Name]/Component.tsx`, and `src/blocks/[Name]/meta.ts`. Do not create one without all three.
+5. **Block slugs must align with render keys.** The `slug` in `config.ts` must exactly match the key used in the `blockComponents` map in `src/blocks/RenderBlocks.tsx` or `src/blocks/RenderArticleBlocks.tsx`.
+6. **Block components do not fetch data directly.** Block components never call `getPayload()` or query data sources directly. Data flows from page-level queries into block props. Exception: `src/blocks/ArchiveBlock/Component.tsx` is a pre-existing approved exception and must not be refactored unless a brief explicitly instructs you to do so.
+7. **Complete the post-block checklist every time.** After creating a new block, add it to the relevant collection or editor registration, update the appropriate renderer, author `meta.ts`, run `pnpm generate:types`, run `pnpm ds:index`, and verify `design-system/block-catalog.json` is updated.
+8. **Tokens change first.** All token changes must go to `src/styles/tokens.css` and `design-system/SUMMARY.md` first, never directly inside a component.
+
+The Tailwind numeric spacing scale maps directly to `--ds-spacing-*` tokens: `p-4 = --ds-spacing-4 = 1rem`. Use standard Tailwind utilities for spacing; no DS alias is needed.
+
+DS color tokens are available as Tailwind utilities: `text-brand-accent`, `bg-content-paper`, `text-content-copy`, `border-content-rule`. Use these in preference to `var(--ds-color-*)` inline styles.
+
+DS typography tokens are available as Tailwind utilities:
+
+| Utility | Token |
+|---|---|
+| `font-display` | `--ds-font-family-display` |
+| `font-body` | `--ds-font-family-body` |
+| `font-mono` | `--ds-font-family-mono` |
+| `font-ui-sans` | `--ds-font-family-ui-sans` |
+| `font-ui-mono` | `--ds-font-family-ui-mono` |
+| `text-2xs` | `--ds-font-size-2xs` |
+| `text-body` | `--ds-font-size-body` |
+| `text-lead` | `--ds-font-size-lead` |
+| `text-heading` | `--ds-font-size-heading` |
+| `text-hero` | `--ds-font-size-hero` |
+| `leading-tight` | `--ds-line-height-tight` |
+| `leading-snug` | `--ds-line-height-snug` |
+| `leading-relaxed` | `--ds-line-height-relaxed` |
+| `leading-body` | `--ds-line-height-body` |
+| `leading-code` | `--ds-line-height-code` |
+| `leading-quote` | `--ds-line-height-quote` |
+
+Font weights: use Tailwind built-ins (`font-light`, `font-normal`, `font-medium`, `font-bold`) — DS weight values are identical to Tailwind defaults, no DS aliases are needed.
+
+Font sizes `text-xs`, `text-sm`, `text-base`: use Tailwind built-ins — same values as `--ds-font-size-xs/sm/base`.
+
+### Build-Surface Rubric
+
+When building a new editorial feature: use a **new Payload block** when the feature must appear in the block editor and be reused. Use a **Payload page** when the feature is a standalone destination. Use a **custom route** for server-side logic, data fetching, or URLs with no editable content (`sitemap`, `redirects`, API endpoints).
+
+Known exceptions for this phase:
+
+- `src/blocks/ArchiveBlock/Component.tsx` calling `getPayload()` is an approved pre-existing exception.
+- `src/components/ContentRegister/Layout.tsx` contains pre-existing inline spacing styles that are explicitly deferred to a later phase.
+
+## Visual Tone
+This project serves creative professionals (artists, writers, musicians).
+Components should feel editorial and considered, not utilitarian.
+Prefer generous whitespace, typographic hierarchy, and restraint over
+feature-dense layouts. When in doubt, do less.

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { RelatedPosts } from '@/components/RelatedPosts/Component'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { ContentRegisterLayout } from '@/components/ContentRegister/Layout'
 import { ArticleHero } from '@/heros/ArticleHero'

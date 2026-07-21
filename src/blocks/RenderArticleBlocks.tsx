@@ -1,10 +1,21 @@
 import React, { Fragment } from 'react'
 import type { DividerBlock, RichTextSection, StepSection } from '@/payload-types'
-import { DividerBlockComponent } from './ArticleBlocks/DividerBlock/Component'
-import { RichTextSectionComponent } from './ArticleBlocks/RichTextSection/Component'
-import { StepSectionComponent } from './ArticleBlocks/StepSection/Component'
+import { DividerBlockComponent } from './DividerBlock/Component'
+import { RichTextSectionComponent } from './RichTextSection/Component'
+import { StepSectionComponent } from './StepSection/Component'
 
 type ArticleBlock = RichTextSection | StepSection | DividerBlock
+
+const blockComponents = {
+  richTextSection: RichTextSectionComponent,
+  stepSection: StepSectionComponent,
+  dividerBlock: DividerBlockComponent,
+} as const
+
+const spacedBlockTypes = new Set<Exclude<ArticleBlock['blockType'], 'dividerBlock'>>([
+  'richTextSection',
+  'stepSection',
+])
 
 export const RenderArticleBlocks: React.FC<{
   blocks: ArticleBlock[]
@@ -20,28 +31,26 @@ export const RenderArticleBlocks: React.FC<{
         {blocks.map((block, index) => {
           const { blockType } = block
 
-          if (blockType === 'richTextSection') {
+          if (blockType && blockType in blockComponents) {
+            const Block = blockComponents[blockType as keyof typeof blockComponents]
+            const renderedBlock = <Block block={block as never} className={className} />
+
+            if (spacedBlockTypes.has(blockType as Exclude<ArticleBlock['blockType'], 'dividerBlock'>)) {
+              return (
+                <div className="my-16" key={index}>
+                  {renderedBlock}
+                </div>
+              )
+            }
+
             return (
-              <div className="my-16" key={index}>
-                <RichTextSectionComponent block={block as RichTextSection} className={className} />
-              </div>
+              <Fragment key={index}>
+                {renderedBlock}
+              </Fragment>
             )
           }
 
-          if (blockType === 'stepSection') {
-            return (
-              <div className="my-16" key={index}>
-                <StepSectionComponent block={block as StepSection} className={className} />
-              </div>
-            )
-          }
-
-          if (blockType === 'dividerBlock') {
-            return (
-              <DividerBlockComponent block={block as DividerBlock} className={className} key={index} />
-            )
-          }
-
+          console.warn(`RenderArticleBlocks: unknown blockType "${blockType}"`)
           return null
         })}
       </Fragment>
